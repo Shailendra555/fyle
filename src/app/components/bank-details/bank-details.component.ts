@@ -130,8 +130,9 @@ export class BankDetailsComponent implements OnInit {
     bank.isFavorited = !bank.isFavorited;
     const favoritedBanks = this.dataSource.data.filter(bank => bank.isFavorited);
     const dataToStore = favoritedBanks.map(bank => ({ ifsc: bank.ifsc, isFavorited: bank.isFavorited }));
-    const prevArray = this.getUserSettings(this.storageName);
+    const prevArray = this.getUserSettings(this.storageName) || [];
     const resDataToStore = dataToStore.concat(prevArray);
+
     const newDataToStore = _uniqBy(resDataToStore, (e)=>{
       return e.ifsc;
     })
