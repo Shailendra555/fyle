@@ -1,7 +1,7 @@
 
 <div class="page-layout" >
 
-            <div [hidden]="onGoingRequest" style="margin:0 auto;">
+            <div *ngIf="!onGoingRequest" style="margin:0 auto;">
 
                 <div class="container" fxLayout="column">
 
@@ -16,7 +16,7 @@
                                                 Bank Name :
                                         </div> 
                                         <div class="text">
-                                                {{ selectedBank.bank_name }}
+                                                {{ selectedBank?.bank_name }}
                                         </div>
                                 </div>
                                 
@@ -26,7 +26,7 @@
                                                 IFSC :
                                         </div>
                                         <div class="text">
-                                                {{ selectedBank.ifsc }}
+                                                {{ selectedBank?.ifsc }}
                                         </div>
                                 </div>
                                 
@@ -36,7 +36,7 @@
                                                 Address :
                                         </div>
                                 <div class="text">
-                                    {{ selectedBank.address }}
+                                    {{ selectedBank?.address }}
                                 </div>
                                          
                                 </div>
@@ -47,7 +47,7 @@
                                                 Branch :
                                         </div>
                                         <div class="text">
-                                                {{ selectedBank.branch }}
+                                                {{ selectedBank?.branch }}
                                         </div>
                                 </div>
                                 
@@ -57,7 +57,7 @@
                                                 City :
                                         </div>
                                         <div class="text">
-                                                {{ selectedBank.city }}
+                                                {{ selectedBank?.city }}
                                         </div>
                                 </div>
                                 
@@ -69,7 +69,7 @@
                                                 District :
                                         </div>
                                         <div class="text">
-                                                {{ selectedBank.district }}
+                                                {{ selectedBank?.district }}
                                         </div>
                                          
                                 </div>
@@ -80,7 +80,7 @@
                                                 State :
                                         </div>
                                         <div class="text">
-                                                {{ selectedBank.state }}
+                                                {{ selectedBank?.state }}
                                         </div>
                                          
                                 </div>
@@ -92,7 +92,7 @@
                 </div>
       
               </div>
-              <div class="spinner-container" [hidden]="!onGoingRequest">
+              <div class="spinner-container" *ngIf="onGoingRequest">
                     <mat-progress-spinner mode="indeterminate" [diameter]="45"></mat-progress-spinner>
               </div>
        
