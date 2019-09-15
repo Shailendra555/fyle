@@ -92,7 +92,7 @@ export class BankDetailsComponent implements OnInit {
    this.dataSource.paginator = this.paginator;
   }
 
-  pageSizeChange(event){
+  pageSizeChange(){
     if(this.pageSize > 50) {
       this.dataSource.paginator = this.paginator;
     }
