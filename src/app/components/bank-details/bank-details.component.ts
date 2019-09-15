@@ -70,7 +70,7 @@ export class BankDetailsComponent implements OnInit {
       } else {
         this.onGoingRequest = true;
       await this.bankService.getList(this.selectedCity);
-      const bankList = await this.bankService.getBankList();
+      const bankList = await this.bankService.getBankList() || [];
       this.cityList[i].bankList = bankList;
       this.bankList = bankList as BankDetails[];
       this.onGoingRequest = false;
