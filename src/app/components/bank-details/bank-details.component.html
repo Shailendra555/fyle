@@ -58,7 +58,7 @@
           </div>
 <div><input class="paginator-input" matInput [(ngModel)]="pageSize" (change)="setDefaultPageSize()" (keyup)="pageSizeChange()" ></div>
             
-              <mat-paginator (page)="pageEvent = $event" [pageSize]="pageSize" showFirstLastButtons></mat-paginator>
+              <mat-paginator [pageSize]="pageSize" showFirstLastButtons></mat-paginator>
         </div>
         
         
