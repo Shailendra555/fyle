@@ -1,0 +1,68 @@
+
+<div class="page-layout" >
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign.xs="start start" fxLayoutGap="40px" fxLayoutGap.xs="6px" fxLayoutAlign="start center">
+
+    <div class="custom-form-field">
+        <mat-form-field  appearance="outline">
+            <mat-label>Select City</mat-label>
+            <mat-select name="city" (selectionChange)="changeSelection()" [(value)]="selectedCity">
+              <mat-option *ngFor="let city of cityList" [value]="city.key">
+                {{city.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+      
+        <div style="width:100%" fxLayout="row" fxLayoutAlign="start center">
+          <div class="search-box">
+          <span class="search-icon-container"><img class="search-icon" src="https://img.icons8.com/android/24/000000/search.png"></span>
+          <input class="search-input" type="text" placeholder="Search" (input)="applyFilter($event.target.value)" (keyup)="applyFilter($event.target.value)">
+          </div>
+        </div>
+  </div>
+  <br>
+  <div >
+      <div  class="mat-elevation-z8 table-container" >
+          <table  mat-table [dataSource]="dataSource"  >
+            <ng-container  *ngFor="let col of displayedColumns; let i = index;"  [matColumnDef]="col" >
+              <div *ngIf="i === 0">
+                  <th  class="ft-16" mat-header-cell *matHeaderCellDef> {{ displayNamesForColumns[i]}}</th>
+                  <td  class="ft-12" mat-cell *matCellDef="let row"> 
+                      <img *ngIf="!row.isFavorited" class="wd-16" src="https://img.icons8.com/ios/50/000000/star.png" (click)="toggleFavorite(row)">
+                      <img *ngIf="row.isFavorited" class="wd-16" src="https://img.icons8.com/material/24/000000/star--v1.png" (click)="toggleFavorite(row)">
+                  </td>
+              </div>
+                <div *ngIf="i > 0 ">
+                    <th class="ft-16" mat-header-cell *matHeaderCellDef> {{ displayNamesForColumns[i]}}</th>
+                    <td class="ft-12" mat-cell *matCellDef="let row"> {{row[col]}} </td>
+                </div>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr [hidden]="onGoingRequest" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          </table>
+
+          <div class="spinner-container" [hidden]="!onGoingRequest">
+              <mat-progress-spinner mode="indeterminate" [diameter]="45"></mat-progress-spinner>
+            </div>
+
+          <div *ngIf="errorObject.isError" class="error-msg">
+              {{ errorObject.msg}}
+            </div>
+          
+        </div>
+        <div fxLayout="row" style="float:right;" fxLayoutAlign="end center">
+          <div style="font-size:13px; color:gray">
+              Page size: 
+          </div>
+<div><input class="paginator-input" matInput [(ngModel)]="pageSize" (change)="setDefaultPageSize()" (keyup)="pageSizeChange()" ></div>
+            
+              <mat-paginator (page)="pageEvent = $event" [pageSize]="pageSize" showFirstLastButtons></mat-paginator>
+        </div>
+        
+        
+  </div>
+ 
+  
+</div>

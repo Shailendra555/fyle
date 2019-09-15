@@ -1,0 +1,85 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-row {
+    height: auto;
+  }
+  
+  .mat-cell {
+    padding: 8px 8px 8px 0;
+  }
+
+  .page-layout{
+    padding:2% 2% 0% 2%;
+  }
+
+  .search-box{
+    width: 50%; 
+    height: 38px; 
+    border: 1px solid lightgray; 
+    border-radius: 28px; 
+    padding-left: 20px; 
+    outline: none;
+  }
+
+  .search-icon-container {
+    width: 16px; 
+     outline: none;
+  }
+
+  .search-icon{
+    width: 12px;
+    margin-right: 6px;
+    position: relative;
+    top: 6%;
+  }
+
+  .search-input{
+    height: 34px; 
+    border: 1px solid white; 
+    outline: none;
+    width: calc(100% - 40px);
+  }
+
+  .table-container {
+    width: 100%;
+    overflow: scroll; 
+    height: calc(100vh - 160px)
+  }
+
+  .wd-16{
+    width: 16px;
+  }
+
+  .ft-16{
+    font-size:16px;
+  }
+
+  .ft-12{
+    font-size:12px;
+  }
+
+  .error-msg{
+    text-align: center;
+    position: relative;
+    top: 35%;
+    color: lightgray;
+  }
+
+  .paginator-input{
+    margin-left: 6px;
+    height: 22px;
+    width: 50px;
+    border: 1px solid #b4afaf;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    color: gray;
+  }
+
+  .spinner-container{
+    position: absolute;
+    top: 45%;
+    left: 48%;
+  }
