@@ -1,8 +1,10 @@
 
 <div class="page-layout" >
 
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign.xs="start start" fxLayoutGap="40px" fxLayoutGap.xs="6px" fxLayoutAlign="start center">
+        <div class="page-header">Bank List</div>
+  <div style="margin-top: -10px;" fxLayout="row" fxLayout.xs="column" fxLayoutAlign.xs="start start" fxLayoutGap="40px" fxLayoutGap.xs="6px" fxLayoutAlign="start center">
 
+    
     <div class="custom-form-field">
         <mat-form-field  appearance="outline">
             <mat-label>Select City</mat-label>
@@ -36,8 +38,8 @@
               <div *ngIf="i === 0">
                   <th  class="ft-16" mat-header-cell *matHeaderCellDef> {{ displayNamesForColumns[i]}}</th>
                   <td  class="ft-12" mat-cell *matCellDef="let row"> 
-                      <img *ngIf="!row.isFavorited" class="wd-16 pointer" src="../../../assets/icons/icons.png" (click)="toggleFavorite(row)">
-                      <img *ngIf="row.isFavorited" class="wd-16 pointer" src="../../../assets/icons/icon1.png" (click)="toggleFavorite(row)">
+                      <img *ngIf="!row.isFavorited" class="wd-16 pointer" src="../../../assets/icons/icons.png" (click)="toggleFavorite(row, $event)">
+                      <img *ngIf="row.isFavorited" class="wd-16 pointer" src="../../../assets/icons/icon1.png" (click)="toggleFavorite(row, $event)">
                   </td>
               </div>
                 <div *ngIf="i > 0 ">
@@ -46,8 +48,7 @@
                 </div>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-          <tr class="backgound-change pointer"  [hidden]="onGoingRequest" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-<!-- (click)="openBankProfile(row)" -->
+          <tr class="backgound-change pointer" (click)="openBankProfile(row)"   [hidden]="onGoingRequest" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
 
           <div class="spinner-container" [hidden]="!onGoingRequest">

@@ -1,0 +1,105 @@
+
+<div class="page-layout" >
+
+            <div [hidden]="onGoingRequest" style="margin:0 auto;">
+
+                <div class="container" fxLayout="column">
+
+                    <div class="header">
+                        Bank Details
+                    </div>
+                    <div class="body" >
+                        <div class="content">
+
+                                <div class="single-container" fxLayout="row">
+                                        <div class="heading">
+                                                Bank Name :
+                                        </div> 
+                                        <div class="text">
+                                                {{ selectedBank.bank_name }}
+                                        </div>
+                                </div>
+                                
+                                <br>
+                                <div class="single-container" fxLayout="row">
+                                        <div class="heading">
+                                                IFSC :
+                                        </div>
+                                        <div class="text">
+                                                {{ selectedBank.ifsc }}
+                                        </div>
+                                </div>
+                                
+                                <br>
+                                <div class="single-container" fxLayout="row">
+                                        <div class="heading">
+                                                Address :
+                                        </div>
+                                <div class="text">
+                                    {{ selectedBank.address }}
+                                </div>
+                                         
+                                </div>
+                                
+                                <br>
+                                <div class="single-container" fxLayout="row">
+                                        <div class="heading">
+                                                Branch :
+                                        </div>
+                                        <div class="text">
+                                                {{ selectedBank.branch }}
+                                        </div>
+                                </div>
+                                
+                                <br>
+                                <div class="single-container" fxLayout="row">
+                                        <div class="heading">
+                                                City :
+                                        </div>
+                                        <div class="text">
+                                                {{ selectedBank.city }}
+                                        </div>
+                                </div>
+                                
+                                 
+                                <br>
+                                <div class="single-container" fxLayout="row">
+    
+                                        <div class="heading">
+                                                District :
+                                        </div>
+                                        <div class="text">
+                                                {{ selectedBank.district }}
+                                        </div>
+                                         
+                                </div>
+                                
+                                <br>
+                                <div class="single-container" fxLayout="row">
+                                        <div class="heading">
+                                                State :
+                                        </div>
+                                        <div class="text">
+                                                {{ selectedBank.state }}
+                                        </div>
+                                         
+                                </div>
+                        </div>
+                           
+                            
+
+                    </div>
+                </div>
+      
+              </div>
+              <div class="spinner-container" [hidden]="!onGoingRequest">
+                    <mat-progress-spinner mode="indeterminate" [diameter]="45"></mat-progress-spinner>
+              </div>
+       
+        
+      </div>
+      
+
+      <!-- <div *ngIf="errorObject.isError" class="error-msg">
+                    {{ errorObject.msg}}
+                  </div> -->

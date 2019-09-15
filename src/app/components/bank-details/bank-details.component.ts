@@ -3,6 +3,7 @@ import { BanksServiceService } from 'src/app/services/banks-service.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import {uniqBy as _uniqBy} from 'lodash';
+import { Router } from '@angular/router';
 
 
 class BankDetails{
@@ -44,7 +45,9 @@ export class BankDetailsComponent implements OnInit {
   ]
 
 
-  constructor(private bankService: BanksServiceService) { }
+  constructor(private bankService: BanksServiceService,
+    private router: Router
+    ) { }
 
   displayedColumns = ['F','bank_id', 'bank_name', 'ifsc', 'address', 'branch', 'city', 'district', 'state'];
   displayNamesForColumns = ['','Id', 'Bank Name', 'IFSC', 'Address', 'Branch', 'City', 'District' ,'State'];
@@ -127,7 +130,9 @@ export class BankDetailsComponent implements OnInit {
     this.errorObject.isError = isError;
   }
 
-  toggleFavorite(bank){
+  toggleFavorite(bank, event){
+
+    event.stopPropagation();
     bank.isFavorited = !bank.isFavorited;
     const favoritedBanks = this.dataSource.data.filter(bank => bank.isFavorited);
     const dataToStore = favoritedBanks.map(bank => ({ ifsc: bank.ifsc, isFavorited: bank.isFavorited }));
@@ -169,8 +174,8 @@ export class BankDetailsComponent implements OnInit {
     this.dataSource.data = this.dataSourceCopy;
   }
 
-  // openBankProfile(selectedBank){
-    
-  // }
+  openBankProfile(selectedBank){
+    this.router.navigate([`/${selectedBank.city}/${selectedBank.ifsc}`]);
+  }
 
 }
