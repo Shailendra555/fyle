@@ -15,7 +15,7 @@ export class BankProfileComponent implements OnInit {
 
   ifsc : string = '';
   city : string = '';
-  selectedBank = {};
+  selectedBank : any;
   onGoingRequest: boolean = true;
   ngOnInit() {
 
