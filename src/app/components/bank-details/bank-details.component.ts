@@ -49,7 +49,7 @@ export class BankDetailsComponent implements OnInit {
     private router: Router
     ) { }
 
-  displayedColumns = ['F','bank_id', 'bank_name', 'ifsc', 'address', 'branch', 'city', 'district', 'state'];
+  displayedColumns = ['Favorite','bank_id', 'bank_name', 'ifsc', 'address', 'branch', 'city', 'district', 'state'];
   displayNamesForColumns = ['','Id', 'Bank Name', 'IFSC', 'Address', 'Branch', 'City', 'District' ,'State'];
   onGoingRequest : boolean = true;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -62,7 +62,7 @@ export class BankDetailsComponent implements OnInit {
 
   bankList: BankDetails[] = [];
   async changeSelection(){
-  
+   this.setError('', false);
    for(let i:any = 0; i < this.cityList.length ; i++){
      if(this.cityList[i].key === this.selectedCity){
       if(this.cityList && this.cityList[i].bankList && this.cityList[i].bankList.length){
@@ -113,10 +113,7 @@ export class BankDetailsComponent implements OnInit {
     if(this.dataSource.filteredData.length < 1){
       this.setError('No Record Found', true);
     } else {
-      this.errorObject = {
-        msg: '',
-        isError: false
-      }
+      this.setError('', false);
     }
   }
 
@@ -167,7 +164,12 @@ export class BankDetailsComponent implements OnInit {
 
   dataSourceCopy = [];
   filterByFavorites(){
-    this.dataSource.data = this.dataSource.data.filter(data => data.isFavorited);
+    this.dataSource.data = this.dataSource.data.filter(data => data.isFavorited) || [];
+    if(!this.dataSource.data.length){
+      this.setError('No Record Found', true);
+    } else {
+      this.setError('', false);
+    }
   }
 
   resetFilter(){
