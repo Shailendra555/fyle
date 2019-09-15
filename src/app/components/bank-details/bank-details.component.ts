@@ -62,15 +62,15 @@ export class BankDetailsComponent implements OnInit {
   
    for(let i:any = 0; i < this.cityList.length ; i++){
      if(this.cityList[i].key === this.selectedCity){
-      if(!this.cityList[i].bankList.length){
-      this.onGoingRequest = true;
+      if(this.cityList && this.cityList[i].bankList && this.cityList[i].bankList.length){
+        this.bankList = this.cityList[i].bankList;
+      } else {
+        this.onGoingRequest = true;
       await this.bankService.getList(this.selectedCity);
       const bankList = await this.bankService.getBankList();
       this.cityList[i].bankList = bankList;
       this.bankList = bankList as BankDetails[];
       this.onGoingRequest = false;
-      } else {
-        this.bankList = this.cityList[i].bankList;
       }
      }
    }
