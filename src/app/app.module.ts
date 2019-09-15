@@ -15,6 +15,8 @@ import { BankDetailsComponent } from './components/bank-details/bank-details.com
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -36,7 +38,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

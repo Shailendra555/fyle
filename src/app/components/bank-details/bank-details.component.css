@@ -83,3 +83,11 @@ table {
     top: 45%;
     left: 48%;
   }
+
+  .pointer{
+      cursor: pointer;
+  }
+
+  .backgound-change:hover{
+      background: whitesmoke;
+  }

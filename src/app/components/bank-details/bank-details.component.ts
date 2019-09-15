@@ -89,6 +89,7 @@ export class BankDetailsComponent implements OnInit {
      });
    }
    this.dataSource = new MatTableDataSource(this.bankList);
+   this.dataSourceCopy = this.dataSource.data;
    this.dataSource.paginator = this.paginator;
   }
 
@@ -157,5 +158,19 @@ export class BankDetailsComponent implements OnInit {
     let data = localStorage.getItem(cacheName);
     return JSON.parse(data);
   }
+
+
+  dataSourceCopy = [];
+  filterByFavorites(){
+    this.dataSource.data = this.dataSource.data.filter(data => data.isFavorited);
+  }
+
+  resetFilter(){
+    this.dataSource.data = this.dataSourceCopy;
+  }
+
+  // openBankProfile(selectedBank){
+    
+  // }
 
 }
