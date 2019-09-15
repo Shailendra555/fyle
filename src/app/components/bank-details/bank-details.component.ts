@@ -79,7 +79,7 @@ export class BankDetailsComponent implements OnInit {
     bank.isFavorited = false;
   });
    const listReturned = this.getUserSettings(this.storageName);
-   if(listReturned.length){
+   if(listReturned && listReturned.length){
      listReturned.forEach(bank => {
        this.bankList.forEach(b => { 
         if(bank.ifsc === b.ifsc){
